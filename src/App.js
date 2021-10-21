@@ -1,8 +1,8 @@
 import { Fragment, useEffect, useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import PeopleList from './Pages/PeopleList'
 import NavBar from './Pages/Layout/NavBar';
+import PeopleList from './Pages/PeopleList'
 import PersonDetail from './Pages/PersonDetail';
 
 import HttpService from './Services/HttpService';
@@ -21,7 +21,7 @@ function App() {
         console.error(e)
       }
     })()
-  }, [setPaginationOpts, paginationOpts])
+  }, [setPaginationOpts, paginationOpts, getPeople])
 
   const handlePrevious = () => {
     const options = {

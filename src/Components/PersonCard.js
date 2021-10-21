@@ -1,15 +1,18 @@
+import { Fragment } from 'react-is';
 import { Link } from 'react-router-dom'
 import generatePdf from '../Helpers/pdfGenerator'
 import '../Styles/PersonCard.scss'
 
 const PersonCard = ({person}) => {
   return (
+    <Fragment>
+
     <div className="container mt-3 d-flex justify-content-center">
         <div className="card px-3 py-1 shadow-lg">
             <div className="d-flex align-items-center">
                 <div > 
                   <Link className="styled-link" to={`/profile/${person.username}`}>
-                    <img src={person.picture} className="image" width="130"></ img>
+                    <img src={person.picture} alt={`Person face`} className="image" width="130"></ img>
                   </ Link> 
                 </div>
                 <div className="ml-3 w-100 p-3">
@@ -27,6 +30,7 @@ const PersonCard = ({person}) => {
             </div>
         </div>
     </div>
+    </Fragment>
     )
 }
 
