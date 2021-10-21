@@ -2,8 +2,21 @@ import { Fragment } from 'react-is';
 import { Link } from 'react-router-dom'
 import generatePdf from '../Helpers/pdfGenerator'
 import '../Styles/PersonCard.scss'
+import HttpService from '../Services/HttpService';
 
 const PersonCard = ({person}) => {
+  const addToFavorite = HttpService().addToFavorite
+  
+  const toggleHeart =  (id) => {
+    let button = document.querySelector(`#heart-${id}`)
+    button.style.opacity === "" ? button.style.opacity = 0.5 : button.style.opacity = ""
+  }
+
+  const addFavorite = (person) => {
+    toggleHeart(person.subjectId)
+    addToFavorite(person)
+  }
+
   return (
     <Fragment>
 
@@ -16,7 +29,19 @@ const PersonCard = ({person}) => {
                   </ Link> 
                 </div>
                 <div className="ml-3 w-100 p-3">
-                    <h3 className="mb-0 mt-0"><Link className="styled-link" to={`/profile/${person.username}`}>{person.name}</Link></h3> <span className="professional-headline">{person.professionalHeadline}</span>
+                    <div className="row">
+                      <div className="col-11 px-0">
+                        <h3 className="mb-0 mt-0">
+                          <Link className="styled-link" to={`/profile/${person.username}`}>
+                            {person.name}
+                          </Link>
+                        </h3> 
+                      </div>
+                      <div className="col-1 p-0">
+                        <a title="Love it" className="styled-link" id={`heart-${person.subjectId}`} onClick={() => addFavorite(person)}><span>&#x2764;</span></a>
+                      </div>
+                    </div>
+                    <span className="professional-headline">{person.professionalHeadline}</span>
                     <div className="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
                         <div className="d-flex flex-column"> <span className="articles">Articles</span> <span className="number1">38</span> </div>
                         <div className="d-flex flex-column"> <span className="followers">Followers</span> <span className="number2">980</span> </div>

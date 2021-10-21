@@ -13,8 +13,14 @@ const HttpService = () => {
     //Get detailed info of a person
     getPersonInfo(username){
       if(!username) return ''
+      //cors-anywhere like 
       return axios.get(`https://mighty-brook-86503.herokuapp.com/http://bio.torre.co/api/bios/${username}`)
     },
+    //Adds a person to favorite
+    addToFavorite(person){
+      console.log(person)
+      return axios.post(`${process.env.REACT_APP_API_URL}/favorites`)
+    }
   }
 
   return Object.assign({}, proto);

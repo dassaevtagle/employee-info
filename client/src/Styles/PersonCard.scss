@@ -4,6 +4,7 @@
 
   &:focus, &:hover, &:visited, &:link, &:active {
       text-decoration: none;
+      cursor: pointer;
   }
 }
 
