@@ -6,8 +6,11 @@ const PeopleList = ({persons, handleNext, handlePrevious}) => {
     <div className="container">
       {
         persons.results.map((person) => (
-          <PersonCard person={person}/>
-          ))
+          <PersonCard
+            key={person.subjectId}
+            person={person}
+          />
+        ))
       }
       <nav aria-label="Page navigation example">
         <ul className="pagination justify-content-center">

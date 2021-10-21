@@ -1,22 +1,14 @@
 import { Fragment, useEffect, useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Axios from 'axios'
 
 import PeopleList from './Pages/PeopleList'
 import NavBar from './Pages/Layout/NavBar';
 import PersonDetail from './Pages/PersonDetail';
 
-const getPeople = async ({after, before}) => {
-  let url = 'https://search.torre.co/people/_search?size=5'
-  //add pagination if received string
-  url = after ? url += `&after=${after}` : url
-  url = before ? url += `&before=${before}` : url
-  console.log('url', url)
-  return Axios.post(url)
-}
+import HttpService from './Services/HttpService';
 
 function App() {
-  
+  const getPeople = HttpService().getPeople
   const [paginationOpts, setPaginationOpts] = useState({after: null, before: null})
   const [persons, setPersons] = useState(null)
 
