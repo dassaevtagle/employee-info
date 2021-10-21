@@ -1,6 +1,6 @@
 import { useEffect, useState, Fragment } from 'react'
 import { useParams } from 'react-router-dom'
-import Map from '../Components/Map'
+import LocationMap from '../Components/LocationMap'
 import HttpService from '../Services/HttpService';
 
 import '../Styles/PersonDetail.scss'
@@ -14,11 +14,12 @@ const PersonDetail = () => {
       try {
         let response = await getPersonInfo(username)
         setPersonInfo(response.data)
+        console.log(personInfo)
       } catch (e) {
         console.error(e)
       }
     })()
-  }, [personInfo])
+  }, [username])
 
   return (
     personInfo ? (
@@ -115,14 +116,20 @@ const PersonDetail = () => {
                     </div>
                   </div>
                   <hr></hr>
-                  <div className="row">
-                    <div className="col-sm-12">
-                      <a className="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
-                    </div>
-                  </div>
                 </div>
               </div>
-
+              <div className="card my-1 w-100 p-2">
+                <div className="col d-inline-flex">
+                  <h4 className="w-auto">Person location</h4>
+                  <small className="text-muted my-auto">&nbsp; &nbsp;(Not address)</small>
+                </div>
+              </div>
+              <div className="card shadow-md w-100 my-2">
+                <LocationMap 
+                  lat={personInfo.person.location.latitude}
+                  lng={personInfo.person.location.longitude}
+                />
+              </div>
               <div className="row gutters-sm">
                 <div className="col-sm-6 mb-3">
                   <div className="card h-100 w-100">

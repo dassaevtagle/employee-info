@@ -21,7 +21,7 @@ function App() {
         console.error(e)
       }
     })()
-  }, [setPaginationOpts, paginationOpts, getPeople])
+  }, [setPaginationOpts, paginationOpts])
 
   const handlePrevious = () => {
     const options = {
