@@ -120,8 +120,8 @@ const PersonDetail = () => {
               </div>
               <div className="card my-1 w-100 p-2">
                 <div className="col d-inline-flex">
-                  <h4 className="w-auto">Person location</h4>
-                  <small className="text-muted my-auto">&nbsp; &nbsp;(Not address)</small>
+                  <h4 className="w-auto m-0">Person location</h4>
+                  <small className="text-muted mt-auto">&nbsp; &nbsp;(Not address)</small>
                 </div>
               </div>
               <div className="card shadow-md w-100 my-2">
