@@ -19,17 +19,17 @@ const HttpService = () => {
     },
     //Adds a person to favorite
     addToFavorite(favorite){
-      return axios(`https://torreco-test.herokuapp.com/favorites`, {
+      return axios(`/api/favorites`, {
               method: "post",
               data: {favorite},
               withCredentials: true,
             })
     },
     signup({username, password}){
-      return axios.post(`https://torreco-test.herokuapp.com/api/signup`, {username, password})
+      return axios.post(`/api/signup`, {username, password})
     },
     login({username, password}){
-      return axios.post(`https://torreco-test.herokuapp.com/api/signin`, {username, password})
+      return axios.post(`/api/signin`, {username, password})
     },
     isAuth(token){
       console.log(token)

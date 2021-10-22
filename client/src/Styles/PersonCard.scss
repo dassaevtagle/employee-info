@@ -27,6 +27,13 @@
 
 .image{
   border-radius: 6rem;
+  display: none;
+}
+
+@media (min-width: 500px) {
+  .image{
+    display: flex;
+  }
 }
 
 .professional-headline{
