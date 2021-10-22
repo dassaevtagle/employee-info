@@ -48,28 +48,24 @@ const Routes = () => {
   }
 
   return (
-    <Switch>
-      {
-        persons && !loading? (
-        <>
-          <Route exact path="/" >
-            <PeopleList 
-              persons={persons} 
-              handleNext={handleNext} 
-              handlePrevious={handlePrevious}
-              />
-          </Route> 
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
-          <Route path="/profile/:username" component={PersonDetail} />
-          <Route path="/favorites/:username" />
-          <Route component={NotFound} />
-        </>
-        ) : (
-          <Spinner />
-        )
-      }
-    </ Switch>
+    persons && !loading? (
+      <Switch>
+        <Route exact path="/" >
+          <PeopleList 
+            persons={persons} 
+            handleNext={handleNext} 
+            handlePrevious={handlePrevious}
+            />
+        </Route> 
+        <Route path="/signup" component={Signup} />
+        <Route path="/login" component={Login} />
+        <Route path="/profile/:username" component={PersonDetail} />
+        <Route path="/favorites/:username" />
+        <Route component={NotFound} />
+      </ Switch>
+      ) : (
+        <Spinner />
+      )
   )
 }
 
