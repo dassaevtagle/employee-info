@@ -26,14 +26,14 @@ const HttpService = () => {
             })
     },
     signup({username, password}){
-      return axios.post(`${_baseUrl}/signup`, {username, password})
+      return axios.post(`${_baseUrl}/api/signup`, {username, password})
     },
     login({username, password}){
-      return axios.post(`${_baseUrl}/signin`, {username, password})
+      return axios.post(`${_baseUrl}/api/signin`, {username, password})
     },
     isAuth(token){
       console.log(token)
-      return axios.get(`${_baseUrl}/is-auth`, {withCredentials: true})
+      return axios.get(`${_baseUrl}/api/is-auth`, {withCredentials: true})
     }
   }
 

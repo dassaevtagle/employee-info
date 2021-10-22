@@ -1,2 +1,32 @@
 //Tuesday
---> 21.00 -
+--> 21.00 - 23.00 
+      | Scaffold React App
+      | Added PersonCard Component with Bootstrap
+      | Added HttpService
+      | PeopleList Page Added
+
+//Wednesday
+--> 14.00 - 16.00
+        | Improved html
+        | Created git repo
+
+--> 21.00 - 03.00 (Wednesday)
+        | Added Profile Page and HTML
+        | generatePdf functionality added
+        | Pdf HTML added
+
+--> 9.00 - 10.00
+        | Express server scaffold on project
+
+--> 15.00 - 19.00
+        | Pigeon Maps added on Profile
+        | Auth on server added
+
+--> 00.00 - 2.00
+        | Footer Component added
+        | React client login (jwt) and auth Pages HTML
+        | Finished Routes on server side (controllers too)
+
+--> 10.00 - 16.00
+        | Added spinners
+        | Color Schema changed
