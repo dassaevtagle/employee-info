@@ -19,21 +19,21 @@ const HttpService = () => {
     },
     //Adds a person to favorite
     addToFavorite(favorite){
-      return axios(`${_baseUrl}/favorites`, {
+      return axios(`/favorites`, {
               method: "post",
               data: {favorite},
               withCredentials: true,
             })
     },
     signup({username, password}){
-      return axios.post(`${_baseUrl}/api/signup`, {username, password})
+      return axios.post(`/api/signup`, {username, password})
     },
     login({username, password}){
-      return axios.post(`${_baseUrl}/api/signin`, {username, password})
+      return axios.post(`/api/signin`, {username, password})
     },
     isAuth(token){
       console.log(token)
-      return axios.get(`${_baseUrl}/api/is-auth`, {withCredentials: true})
+      return axios.get(`/api/is-auth`, {withCredentials: true})
     }
   }
 
