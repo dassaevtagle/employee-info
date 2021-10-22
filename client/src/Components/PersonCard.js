@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import generatePdf from '../Helpers/pdfGenerator'
 import '../Styles/PersonCard.scss'
 import HttpService from '../Services/HttpService';
+import { AuthContext } from '../Services/AuthContext'
+import { useContext } from 'react'
 
 const calculateProgress = (weight) => {
   return (weight * 100 / 25000) + "%"
@@ -10,6 +12,7 @@ const calculateProgress = (weight) => {
 
 const PersonCard = ({person}) => {
   const addToFavorite = HttpService().addToFavorite
+  const { isAuth } = useContext(AuthContext)
   
   const toggleHeart =  (id) => {
     let button = document.querySelector(`#heart-${id}`)
@@ -41,19 +44,41 @@ const PersonCard = ({person}) => {
                           </Link>
                         </h4> 
                       </div>
-                      <div className="col-1 p-0">
-                        <a title="Love it" className="styled-link" id={`heart-${person.subjectId}`} onClick={() => addFavorite(person)}><span>&#x2764;</span></a>
-                      </div>
+                      {
+                        isAuth ? (
+                          <div className="col-1 p-0">
+                            <a 
+                              title="Love it" 
+                              className="styled-link" 
+                              id={`heart-${person.subjectId}`} 
+                              onClick={() => addFavorite(person)}
+                            >
+                              <span>&#x2764;</span>
+                            </a>
+                          </div>
+                        ) : <></>
+                      }
                     </div>
                     <span className="professional-headline">
                         {person.professionalHeadline}
                     </span>
                     <div className="ms-4">
                       <div>
-                        <small className="text-sm text-muted mx-2" style={{fontSize: "12px"}}>Weight</small>
+                        <small 
+                          className="text-sm text-muted mx-2" 
+                          style={{fontSize: "12px"}}
+                        >
+                          Weight
+                        </small>
                       </div>
                       <div className="progress">
-                        <div className="progress-bar" role="progressbar" style={{width: calculateProgress(person.weight)}} aria-valuemin="0" aria-valuemax="25000"></div>
+                        <div 
+                          className="progress-bar" 
+                          role="progressbar" 
+                          style={{width: calculateProgress(person.weight)}} 
+                          aria-valuemin="0" 
+                          aria-valuemax="25000"
+                        ></div>
                       </div>  
                     </div>
                     <div className="button mt-2 d-flex justify-content-end"> 
@@ -62,17 +87,20 @@ const PersonCard = ({person}) => {
                         <div className="me-auto ms-1 my-auto badge bg-primary" style={{fontSize: "10px"}}>
                           Remoter &nbsp; <i className="fas fa-globe-americas"></i>
                         </div>
-                      ) : <></>
+                      ) : (<></>)
                     }
-
-                      <a 
-                        className="btn btn-outline-primary mx-1 styled-link" 
-                        target="_blank" 
-                        rel="noreferrer"
-                        href={`https://torre.co/es/messenger/conversations/${person.subjectId}`}
-                      >
-                        Message
-                      </a>
+                    {    
+                      isAuth ? (
+                        <a 
+                          className="btn btn-outline-primary mx-1 styled-link" 
+                          target="_blank" 
+                          rel="noreferrer"
+                          href={`https://torre.co/es/messenger/conversations/${person.subjectId}`}
+                          >
+                          Message
+                        </a>
+                      ) : (<></>)
+                    }
                       <button 
                         className="btn btn-sm btn-primary ml-2" 
                         onClick={() => generatePdf(person.username)}

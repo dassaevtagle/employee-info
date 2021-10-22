@@ -1,6 +1,7 @@
 import axios from "axios"
 
 const HttpService = () => {
+  const _baseUrl = process.env.REACT_APP_API_URL
   const proto = {
     //Get list of people
     async getPeople ({after, before}){
@@ -18,14 +19,17 @@ const HttpService = () => {
     },
     //Adds a person to favorite
     addToFavorite(person){
-      console.log(person)
-      return axios.post(`${process.env.REACT_APP_API_URL}/favorites`)
+      return axios.post(`${_baseUrl}/favorites`)
     },
     signup({username, password}){
-      return axios.post(`${process.env.REACT_APP_API_URL}/signup`, {username, password})
+      return axios.post(`${_baseUrl}/signup`, {username, password})
     },
     login({username, password}){
-      return axios.post(`${process.env.REACT_APP_API_URL}/signin`, {username, password})
+      return axios.post(`${_baseUrl}/signin`, {username, password})
+    },
+    isAuth(token){
+      console.log(token)
+      return axios.get(`${_baseUrl}/is-auth`, {withCredentials: true})
     }
   }
 

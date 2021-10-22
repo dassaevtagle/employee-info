@@ -1,12 +1,14 @@
-import { useEffect, useState, Fragment } from 'react'
+import { useEffect, useState, Fragment, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import LocationMap from '../Components/LocationMap'
 import HttpService from '../Services/HttpService';
+import { AuthContext } from '../Services/AuthContext'
 
 import '../Styles/PersonDetail.scss'
 
 const PersonDetail = () => {
   let { username } = useParams();
+  const { isAuth } = useContext(AuthContext)
   const getPersonInfo = HttpService().getPersonInfo
   const [personInfo, setPersonInfo] = useState(null)
   useEffect(() => {
@@ -38,18 +40,22 @@ const PersonDetail = () => {
                       <p className="text-secondary mb-1">{personInfo.person.professionalHeadline}</p>
                       <p className="text-muted font-size-sm">{personInfo.person.location.shortName}</p>
                       <a 
-                        className="btn btn-primary mx-1" 
+                        className="btn btn-primary mx-1 styled-link" 
                         target="_blank" rel="noreferrer"
                         href={`https://torre.co/es/${personInfo.person.publicId}`}>
                         Follow &nbsp; <i className="fas fa-external-link-alt"></i>
                       </a>
-                      <a 
-                        className="btn btn-outline-primary mx-1" 
-                        target="_blank" rel="noreferrer"
-                        href={`https://torre.co/es/messenger/conversations/${personInfo.person.subjectId}`}
-                      >
-                        Message
-                      </a>
+                      {
+                        isAuth ? (
+                          <a 
+                            className="btn btn-outline-primary mx-1 styled-link" 
+                            target="_blank" rel="noreferrer"
+                            href={`https://torre.co/es/messenger/conversations/${personInfo.person.subjectId}`}
+                            >
+                            Message
+                          </a>
+                        ) : <></>
+                      }   
                     </div>
                   </div>
                 </div>

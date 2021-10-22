@@ -1,6 +1,5 @@
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
-const expressJwt = require('express-jwt') //for express authorization 
 
 const signup = async (req, res, next) => {
   const {username, password} = req.body
@@ -40,6 +39,7 @@ const signin = async (req, res) => {
     const payload = {
       sub: user._id,
       iat: Date.now(),
+      username: user.username
     }
     const token = jwt.sign(payload, process.env.JWT_SECRET)
 
@@ -66,11 +66,28 @@ const signin = async (req, res) => {
   }
 }
 
-const requireSignin = expressJwt({
-  secret: process.env.JWT_SECRET,
-  algorithms: ["HS256"], // added later
-  userProperty: "auth",
-});
+const requireSignin =  (req, res, next) => {
+  const token = req.cookies['t'];
+  if(!token) {
+    return res.status(401).json({
+      err: 'No autorizado'
+    });
+  } else {
+    try {
+      // In case of invalid token it throws an error; 
+      var jwtDecoded = jwt.verify(token, process.env.JWT_SECRET);
+      res.locals.user = {
+        username: jwtDecoded.username,
+        _id: jwtDecoded.sub,
+      }
+      next();
+    } catch(err) {
+      return res.status(401).json({
+        err
+      });
+    }
+  }
+};
 
 module.exports = {
   signup,
