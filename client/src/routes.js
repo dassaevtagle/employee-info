@@ -63,8 +63,7 @@ const Routes = () => {
           <Route path="/login" component={Login} />
           <Route path="/profile/:username" component={PersonDetail} />
           <Route path="/favorites/:username" />
-          <Route path="/404" component={NotFound} />
-          <Redirect to="/404" />
+          <Route component={NotFound} />
         </>
         ) : (
           <Spinner />
