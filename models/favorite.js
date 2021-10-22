@@ -12,6 +12,10 @@ const favoriteSchema = new mongoose.Schema({
   professionalHeadline: String,
   weight: Number,
   remoter: Boolean,
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }
 }, {timestamps: true})
 
 module.exports =  mongoose.model('Favorite', favoriteSchema)

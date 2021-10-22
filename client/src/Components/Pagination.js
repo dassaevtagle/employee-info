@@ -5,22 +5,22 @@ const Pagination = ({onNext, onPrevious, next, previous}) => {
         {
           previous ? (
             <li className="page-item">
-              <a className="page-link styled-link" href="#" onClick={onPrevious}> Previous</a>
+              <a className="page-link styled-link" href="#" onClick={onPrevious}><i className="fas fa-arrow-left"></i></a>
             </li>
           ) : (
             <li className="page-item disabled">
-              <a className="page-link">Previous</a>
+              <a className="page-link"><i className="fas fa-arrow-left"></i></a>
             </li>
           )
         }
         {
           next ? (
             <li className="page-item">
-              <a className="page-link styled-link" href="#" onClick={onNext}>Next</a>
+              <a className="page-link styled-link" href="#" onClick={onNext}><i className="fas fa-arrow-right"></i></a>
             </li>
           ) : (
             <li className="page-item disabled">
-              <a className="page-link">Next</a>
+              <a className="page-link"><i className="fas fa-arrow-right"></i></a>
             </li>
           )
         }

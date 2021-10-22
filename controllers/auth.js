@@ -43,13 +43,14 @@ const signin = async (req, res) => {
     }
     const token = jwt.sign(payload, process.env.JWT_SECRET)
 
-    const {_id, dbUsername } = user
+    const {_id, name } = user
 
     return res.json({
       token,
       user: {
         _id, 
-        username: dbUsername,
+        username,
+        name
       }
     })
     

@@ -18,8 +18,12 @@ const HttpService = () => {
       return axios.get(`https://mighty-brook-86503.herokuapp.com/http://bio.torre.co/api/bios/${username}`)
     },
     //Adds a person to favorite
-    addToFavorite(person){
-      return axios.post(`${_baseUrl}/favorites`)
+    addToFavorite(favorite){
+      return axios(`${_baseUrl}/favorites`, {
+              method: "post",
+              data: {favorite},
+              withCredentials: true,
+            })
     },
     signup({username, password}){
       return axios.post(`${_baseUrl}/signup`, {username, password})

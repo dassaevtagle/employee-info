@@ -28,6 +28,11 @@ const userSchema = new mongoose.Schema({
   summaryOfBio: String,
   publicId: String,
   subjectId: Number,
+  favorites: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Favorite',
+    subjectId: Number
+  }]
 }, {timestamps: true})
 
 //virtual 

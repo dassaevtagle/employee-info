@@ -3,11 +3,13 @@ import { useHistory } from 'react-router-dom'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useCookies } from 'react-cookie'
 import HttpService from '../Services/HttpService'
+import { Notyf } from 'notyf';
 
 const Login = () => {
   const login = HttpService().login
   const [cookies, setCookie] = useCookies(['t']);
   let history = useHistory()
+  const notyf = new Notyf()
   const handleLogin = async (values) => {
     try{
       let response = await login(values)
@@ -15,9 +17,10 @@ const Login = () => {
         //Expires after one week, time in secs
         maxAge: 604800,
       });
+      notyf.success(`Welcome back, ${response.data.user.name}`)
       history.push(`/`)
     } catch(e) {
-      console.log(JSON.stringify(e))
+      notyf.error('Invalid credentials')
     }
   }
 

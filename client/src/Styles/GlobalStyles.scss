@@ -1,0 +1,29 @@
+$theme-colors: (
+  "primary": #cddc39,
+  "dark": #343a40,
+  "gray": #dee2e6,
+  "warning": #dc3545,
+  "light-contrast": #BED7B5
+);
+
+//NProgress styles
+$nprogress-color: #cddc39;
+
+#nprogress .bar {
+  background: $nprogress-color;
+  height: 3px;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px $nprogress-color, 0 0 5px $nprogress-color;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: $nprogress-color;
+  border-left-color: $nprogress-color;
+}
+
+
+@import "~nprogress/nprogress.css";
+@import "~bootstrap/scss/bootstrap";
+

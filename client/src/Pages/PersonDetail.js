@@ -1,9 +1,10 @@
 import { useEffect, useState, Fragment, useContext } from 'react'
 import { useParams } from 'react-router-dom'
-import LocationMap from '../Components/LocationMap'
 import HttpService from '../Services/HttpService';
 import { AuthContext } from '../Services/AuthContext'
 
+import Spinner from '../Components/Spinner'
+import LocationMap from '../Components/LocationMap'
 import '../Styles/PersonDetail.scss'
 
 const PersonDetail = () => {
@@ -31,7 +32,7 @@ const PersonDetail = () => {
     
           <div className="row gutters-sm">
             <div className="col-md-4 mb-3">
-              <div className="card w-100">
+              <div className="card shadow-md w-100">
                 <div className="card-body">
                   <div className="d-flex flex-column align-items-center text-center">
                     <img src={personInfo.person.picture} alt="Admin" className="rounded-circle" width="150"></img>
@@ -86,7 +87,7 @@ const PersonDetail = () => {
               </div> */}
             </div>
             <div className="col-md-8">
-              <div className="card mb-3 w-100">
+              <div className="card shadow-md mb-3 w-100">
                 <div className="card-body">
                   <div className="col-12">
                     {personInfo.person.summaryOfBio}
@@ -169,7 +170,7 @@ const PersonDetail = () => {
 
       </Fragment>
     ) : (
-      <p>Person detail works</p>
+      <Spinner />
     )
   )
 }

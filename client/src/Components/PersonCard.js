@@ -19,9 +19,12 @@ const PersonCard = ({person}) => {
     button.style.opacity === "" ? button.style.opacity = 0.5 : button.style.opacity = ""
   }
 
-  const addFavorite = (person) => {
-    toggleHeart(person.subjectId)
-    addToFavorite(person)
+  const addFavorite = async (person) => {
+    try {
+      toggleHeart(person.subjectId)
+      await addToFavorite(person)
+    } catch(e) {
+    }
   }
 
   return (
@@ -45,7 +48,7 @@ const PersonCard = ({person}) => {
                         </h4> 
                       </div>
                       {
-                        isAuth ? (
+                        /* isAuth ? (
                           <div className="col-1 p-0">
                             <a 
                               title="Love it" 
@@ -56,7 +59,7 @@ const PersonCard = ({person}) => {
                               <span>&#x2764;</span>
                             </a>
                           </div>
-                        ) : <></>
+                        ) : <></> */
                       }
                     </div>
                     <span className="professional-headline">
@@ -84,7 +87,7 @@ const PersonCard = ({person}) => {
                     <div className="button mt-2 d-flex justify-content-end"> 
                     {
                       person.remoter ? (
-                        <div className="me-auto ms-1 my-auto badge bg-primary" style={{fontSize: "10px"}}>
+                        <div className="me-auto ms-1 my-auto badge bg-dark" style={{fontSize: "10px"}}>
                           Remoter &nbsp; <i className="fas fa-globe-americas"></i>
                         </div>
                       ) : (<></>)
@@ -92,7 +95,7 @@ const PersonCard = ({person}) => {
                     {    
                       isAuth ? (
                         <a 
-                          className="btn btn-outline-primary mx-1 styled-link" 
+                          className="btn btn-outline-primary mx-1 styled-link text-dark" 
                           target="_blank" 
                           rel="noreferrer"
                           href={`https://torre.co/es/messenger/conversations/${person.subjectId}`}
@@ -102,7 +105,7 @@ const PersonCard = ({person}) => {
                       ) : (<></>)
                     }
                       <button 
-                        className="btn btn-sm btn-primary ml-2" 
+                        className="btn btn-sm btn-primary ml-2 text-white" 
                         onClick={() => generatePdf(person.username)}
                         
                       >

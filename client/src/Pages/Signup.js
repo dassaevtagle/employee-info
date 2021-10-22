@@ -3,11 +3,12 @@ import { useHistory } from 'react-router-dom'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useCookies } from 'react-cookie'
 import HttpService from '../Services/HttpService'
+import { Notyf } from 'notyf';
 
 const Signup = () => {
   const signup = HttpService().signup
   const [cookies, setCookie] = useCookies(['t']);
-
+  const notyf = new Notyf()
   let history = useHistory()
   const handleSignup = async (values) => {
     try{
@@ -16,9 +17,10 @@ const Signup = () => {
         //Expires after one week, time in secs
         maxAge: 604800,
       });
+      notyf.success(`Welcome, ${response.data.user.name}`)
       history.push(`/`)
     } catch(e) {
-      console.log(JSON.stringify(e))
+      notyf.error("Invalid username. Either it doesn't exist or is already registered")
     }
   }
 

@@ -4,12 +4,15 @@ import Container from 'react-bootstrap/Container'
 import { AuthContext } from '../../Services/AuthContext'
 import { useCookies } from 'react-cookie';
 import { useContext } from 'react'
+import { Notyf } from 'notyf';
 
 const NavBar = () => {
-  const { isAuth } = useContext(AuthContext)
+  const { isAuth, username } = useContext(AuthContext)
   const [cookies, removeCookie] = useCookies(['t']);
+  const notyf = new Notyf()
 
   const handleLogout = () => {
+    notyf.success('Logged out')
     removeCookie('t');
   }
 
@@ -37,11 +40,11 @@ const NavBar = () => {
                 </>
               ) : (
                 <>
-                  <Nav.Link className="text-white styled-link">
+                  {/* <Nav.Link className="text-white styled-link">
                     Favorites
-                  </Nav.Link>
-                  <Nav.Link className="text-white styled-link">
-                    Profile
+                  </Nav.Link> */}
+                  <Nav.Link href={`/profile/${username}`} className="text-white styled-link">
+                    My profile
                   </Nav.Link>
                   <Nav.Link href="/" onClick={handleLogout} className="text-white styled-link">
                     Logout
