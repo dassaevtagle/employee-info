@@ -22,11 +22,14 @@
         | Pigeon Maps added on Profile
         | Auth on server added
 
+//THURSDAY
 --> 00.00 - 2.00
         | Footer Component added
         | React client login (jwt) and auth Pages HTML
         | Finished Routes on server side (controllers too)
 
---> 10.00 - 16.00
+--> 10.00 - 17.00
         | Added spinners
         | Color Schema changed
+        | Responsiveness correction
+        | Deployment bugs fixed
