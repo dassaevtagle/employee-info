@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect} from 'react-router-dom';
 import { useEffect, useState, useContext } from 'react';
 import { AuthContext } from './Services/AuthContext';
 import HttpService from './Services/HttpService';
