@@ -1,43 +1,33 @@
 import PersonCard from "../Components/PersonCard"
+import Pagination from "../Components/Pagination"
+import { Fragment } from "react"
 
 const PeopleList = ({persons, handleNext, handlePrevious}) => {
   return (
-    
     <div className="container">
+
+      <Pagination
+        onNext={handleNext}
+        onPrevious={handlePrevious}
+        next={persons.pagination.next}
+        previous={persons.pagination.previous}
+      />
+
       {
         persons.results.map((person) => (
           <PersonCard
-            key={person.subjectId}
-            person={person}
+          key={person.subjectId}
+          person={person}
           />
-        ))
-      }
-      <nav aria-label="Page navigation example">
-        <ul className="pagination justify-content-center">
-          {
-            persons.pagination.previous ? (
-              <li className="page-item">
-                <a className="page-link" href="#" onClick={handlePrevious}> Previous</a>
-              </li>
-            ) : (
-              <li className="page-item disabled">
-                <a className="page-link">Previous</a>
-              </li>
-            )
-          }
-          {
-            persons.pagination.next ? (
-              <li className="page-item">
-                <a className="page-link" href="#" onClick={handleNext}>Next</a>
-              </li>
-            ) : (
-              <li className="page-item disabled">
-                <a className="page-link">Next</a>
-              </li>
-            )
-          }
-        </ul>
-      </nav>
+          ))
+        }
+
+      <Pagination
+        onNext={handleNext}
+        onPrevious={handlePrevious}
+        next={persons.pagination.next}
+        previous={persons.pagination.previous}
+        />
     </div>
   )
 } 

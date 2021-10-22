@@ -37,13 +37,24 @@ const PersonDetail = () => {
                       <h4>{personInfo.person.name}</h4>
                       <p className="text-secondary mb-1">{personInfo.person.professionalHeadline}</p>
                       <p className="text-muted font-size-sm">{personInfo.person.location.shortName}</p>
-                      <button className="btn btn-primary">Follow</button>
-                      <button className="btn btn-outline-primary">Message</button>
+                      <a 
+                        className="btn btn-primary mx-1" 
+                        target="_blank" 
+                        href={`https://torre.co/es/${personInfo.person.publicId}`}>
+                        Follow &nbsp; <i className="fas fa-external-link-alt"></i>
+                      </a>
+                      <a 
+                        className="btn btn-outline-primary mx-1" 
+                        target="_blank" 
+                        href={`https://torre.co/es/messenger/conversations/${personInfo.person.subjectId}`}
+                      >
+                        Message
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="card mt-3 w-100">
+              {/* <div className="card mt-3 w-100">
                 <ul className="list-group list-group-flush">
                   <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h6 className="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h6>
@@ -66,56 +77,14 @@ const PersonDetail = () => {
                     <span className="text-secondary">bootdey</span>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </div>
             <div className="col-md-8">
               <div className="card mb-3 w-100">
                 <div className="card-body">
-                  <div className="row">
-                    <div className="col-sm-3">
-                      <h6 className="mb-0">Full Name</h6>
-                    </div>
-                    <div className="col-sm-9 text-secondary">
-                      Kenneth Valdez
-                    </div>
+                  <div className="col-12">
+                    {personInfo.person.summaryOfBio}
                   </div>
-                  <hr></hr>
-                  <div className="row">
-                    <div className="col-sm-3">
-                      <h6 className="mb-0">Email</h6>
-                    </div>
-                    <div className="col-sm-9 text-secondary">
-                      fip@jukmuh.al
-                    </div>
-                  </div>
-                  <hr></hr>
-                  <div className="row">
-                    <div className="col-sm-3">
-                      <h6 className="mb-0">Phone</h6>
-                    </div>
-                    <div className="col-sm-9 text-secondary">
-                      (239) 816-9029
-                    </div>
-                  </div>
-                  <hr></hr>
-                  <div className="row">
-                    <div className="col-sm-3">
-                      <h6 className="mb-0">Mobile</h6>
-                    </div>
-                    <div className="col-sm-9 text-secondary">
-                      (320) 380-4539
-                    </div>
-                  </div>
-                  <hr></hr>
-                  <div className="row">
-                    <div className="col-sm-3">
-                      <h6 className="mb-0">Address</h6>
-                    </div>
-                    <div className="col-sm-9 text-secondary">
-                      Bay Area, San Francisco, CA
-                    </div>
-                  </div>
-                  <hr></hr>
                 </div>
               </div>
               <div className="card my-1 w-100 p-2">
@@ -130,7 +99,7 @@ const PersonDetail = () => {
                   lng={personInfo.person.location.longitude}
                 />
               </div>
-              <div className="row gutters-sm">
+              {/* <div className="row gutters-sm">
                 <div className="col-sm-6 mb-3">
                   <div className="card h-100 w-100">
                     <div className="card-body">
@@ -185,10 +154,7 @@ const PersonDetail = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-
-
-
+              </div> */}
             </div>
           </div>
 

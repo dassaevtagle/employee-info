@@ -2,6 +2,7 @@ import { Fragment, useEffect, useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import NavBar from './Pages/Layout/NavBar';
+import Footer from './Pages/Layout/Footer'
 import PeopleList from './Pages/PeopleList'
 import PersonDetail from './Pages/PersonDetail';
 
@@ -58,6 +59,7 @@ function App() {
           />
           <Route path="/profile/:username" component={PersonDetail} />
         </ Switch>
+        <Footer />
       </BrowserRouter>
     ) : <></>
   );

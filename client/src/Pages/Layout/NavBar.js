@@ -4,20 +4,28 @@ import Container from 'react-bootstrap/Container'
 
 const NavBar = () => {
   return (
-    <Navbar bg="light" expand="md">
+    <Navbar bg="dark" expand="md">
       <Container>
-        <Navbar.Brand href="/">Torre.co people</Navbar.Brand>
+        <Navbar.Brand className="text-white styled-link" href="/">Torre.co | People</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav>
-            <Nav.Link href="/">
+            <Nav.Link className="text-white styled-link" href="/">
               People
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link className="text-white styled-link">
               Favorites
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link className="text-white styled-link">
               Profile
+            </Nav.Link>
+            <Nav.Link className="text-white styled-link">
+              Login
+            </Nav.Link>
+            <Nav.Link className="border rounded py-1 px-2 text-white styled-link d-flex bg-white">
+              <div className="my-auto text-dark">
+                Sign up
+              </div>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

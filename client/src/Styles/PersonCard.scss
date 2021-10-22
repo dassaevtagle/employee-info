@@ -8,8 +8,13 @@
   }
 }
 
+.progress{
+  height: 5px !important;
+  width: 50%;
+}
+
 .card {
-  width: 700px;
+  width: 780px;
   border: none;
   border-radius: 10px;
   background-color: #fff
