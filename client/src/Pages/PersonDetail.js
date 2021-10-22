@@ -39,13 +39,13 @@ const PersonDetail = () => {
                       <p className="text-muted font-size-sm">{personInfo.person.location.shortName}</p>
                       <a 
                         className="btn btn-primary mx-1" 
-                        target="_blank" 
+                        target="_blank" rel="noreferrer"
                         href={`https://torre.co/es/${personInfo.person.publicId}`}>
                         Follow &nbsp; <i className="fas fa-external-link-alt"></i>
                       </a>
                       <a 
                         className="btn btn-outline-primary mx-1" 
-                        target="_blank" 
+                        target="_blank" rel="noreferrer"
                         href={`https://torre.co/es/messenger/conversations/${personInfo.person.subjectId}`}
                       >
                         Message

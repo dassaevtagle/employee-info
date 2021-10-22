@@ -2,7 +2,7 @@ const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 const expressJwt = require('express-jwt') //for express authorization 
 
-const signup = async (req, res) => {
+const signup = async (req, res, next) => {
   const {username, password} = req.body
   try {
     const userExists = await User.findOne({username})
@@ -11,13 +11,8 @@ const signup = async (req, res) => {
     }
     const user = new User({username, password})
     const newUser = await user.save()
-    //Drop this fields not to show them to the client, 
-    //They're already saved in DB
-    newUser.hashed_password = undefined
-    newUser.salt = undefined
-    return res.json({
-      user: newUser
-    })
+    
+    next()
   } catch(err){
     //console.log(err)
     return res.status(400).json({
@@ -49,7 +44,10 @@ const signin = async (req, res) => {
     const token = jwt.sign(payload, process.env.JWT_SECRET)
 
     //Persist token as 't' in client cookie that expires in 1 week 
-    res.cookie('t', token, {maxAge: 60 * 60 * 24 * 7 }) 
+    res.cookie('t', token, {
+      maxAge: 60 * 60 * 24 * 7, 
+      httpOnly : false
+    }) 
 
     const {_id, dbUsername } = user
 
@@ -68,13 +66,6 @@ const signin = async (req, res) => {
   }
 }
 
-const signout = (req, res) => {
-  res.clearCookie('t')
-  res.json({
-    message: "Signout success"
-  })
-}
-
 const requireSignin = expressJwt({
   secret: process.env.JWT_SECRET,
   algorithms: ["HS256"], // added later
@@ -84,6 +75,5 @@ const requireSignin = expressJwt({
 module.exports = {
   signup,
   signin, 
-  signout, 
   requireSignin,
 }

@@ -19,10 +19,10 @@ const NavBar = () => {
             <Nav.Link className="text-white styled-link">
               Profile
             </Nav.Link>
-            <Nav.Link className="text-white styled-link">
+            <Nav.Link href="/login" className="text-white styled-link">
               Login
             </Nav.Link>
-            <Nav.Link className="border rounded py-1 px-2 text-white styled-link d-flex bg-white">
+            <Nav.Link href="/signup" className="border rounded py-1 px-2 text-white styled-link d-flex bg-white">
               <div className="my-auto text-dark">
                 Sign up
               </div>

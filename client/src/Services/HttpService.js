@@ -20,6 +20,12 @@ const HttpService = () => {
     addToFavorite(person){
       console.log(person)
       return axios.post(`${process.env.REACT_APP_API_URL}/favorites`)
+    },
+    signup({username, password}){
+      return axios.post(`${process.env.REACT_APP_API_URL}/signup`, {username, password})
+    },
+    login({username, password}){
+      return axios.post(`${process.env.REACT_APP_API_URL}/signin`, {username, password})
     }
   }
 

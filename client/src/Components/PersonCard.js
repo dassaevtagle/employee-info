@@ -68,6 +68,7 @@ const PersonCard = ({person}) => {
                       <a 
                         className="btn btn-outline-primary mx-1 styled-link" 
                         target="_blank" 
+                        rel="noreferrer"
                         href={`https://torre.co/es/messenger/conversations/${person.subjectId}`}
                       >
                         Message
