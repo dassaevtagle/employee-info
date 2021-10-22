@@ -8,8 +8,8 @@ const signup = async (req, res, next) => {
     if(userExists){
       throw new Error("Username already registered")
     }
-    const user = new User({username, password})
-    const newUser = await user.save()
+    const user = new User({username, password, ...res.locals.personInfo.person})
+    await user.save()
     
     next()
   } catch(err){
@@ -42,12 +42,6 @@ const signin = async (req, res) => {
       username: user.username
     }
     const token = jwt.sign(payload, process.env.JWT_SECRET)
-
-    //Persist token as 't' in client cookie that expires in 1 week 
-    res.cookie('t', token, {
-      maxAge: 60 * 60 * 24 * 7, 
-      httpOnly : false
-    }) 
 
     const {_id, dbUsername } = user
 

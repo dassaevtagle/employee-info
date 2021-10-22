@@ -17,6 +17,17 @@ const userSchema = new mongoose.Schema({
    type: String,
    required: true 
   },
+  picture: String,
+  name: String,
+  professionalHeadline: String,
+  location: {
+    shortName: String,
+    latitude: Number,
+    longitude: Number,
+  },
+  summaryOfBio: String,
+  publicId: String,
+  subjectId: Number,
 }, {timestamps: true})
 
 //virtual 

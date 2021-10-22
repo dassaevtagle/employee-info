@@ -2,13 +2,13 @@ const express = require('express')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
-const cors = require('cors')
 
 
 const app = express()
 require('dotenv').config()
 
 const authRoutes = require('./routes/auth')
+const favoritesRoutes = require('./routes/favorites')
 
 //DB config 
 mongoose
@@ -36,6 +36,7 @@ app.use(cookieParser())
 
 //routes
 app.use('/api', authRoutes)
+app.use('/api', favoritesRoutes)
 
 const port = process.env.PORT || 8000
 
