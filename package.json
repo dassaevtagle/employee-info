@@ -6,7 +6,9 @@
   "scripts": {
     "server": "nodemon app.js",
     "client": "yarn --cwd ./client/ start",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "NPM_CONFIG_PRODUCTION=false yarn --cwd ./client/ install && yarn --cwd ./client/ build",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",

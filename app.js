@@ -38,6 +38,16 @@ app.use(cookieParser())
 app.use('/api', authRoutes)
 app.use('/api', favoritesRoutes)
 
+//If production mode, serve react build app
+if(['production'].includes(process.env.NODE_ENV)){
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, "client/build")));
+  // Handle React routing, return all requests to React app
+  app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+  });
+}
+
 const port = process.env.PORT || 8000
 
 app.listen(port, () => {

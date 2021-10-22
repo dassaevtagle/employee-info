@@ -9,6 +9,7 @@ import PeopleList from './Pages/PeopleList'
 import PersonDetail from './Pages/PersonDetail';
 import Signup from './Pages/Signup';
 import Login from './Pages/Login';
+import NotFound from './Pages/NotFound';
 
 const Routes = () => {
   const getPeople = HttpService().getPeople
@@ -62,6 +63,8 @@ const Routes = () => {
           <Route path="/login" component={Login} />
           <Route path="/profile/:username" component={PersonDetail} />
           <Route path="/favorites/:username" />
+          <Route path="/404" component={NotFound} />
+          <Redirect to="/404" />
         </>
         ) : (
           <Spinner />
